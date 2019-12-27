@@ -1,24 +1,20 @@
-const twosum = (arr, k) => {
+const MultiplyArr = (arr) => {
+    // Assuming Non zero values
+    let s = 1
     for (let i = 0; i < arr.length; i++) {
-        if ( arr.slice(i+1).includes(k- arr[i])) {
-            return true
-        }
-        
+        s *= arr[i]
         
     }
-    return false
+
+   let newarr = arr.map((e) => {
+      
+        return s/e
+    });
+    return newarr
 }
 
-const twosum1 = (arr,k) => {
-    dict = {}
-    for(let i = 0; i < arr.length; i++){
-        if (dict.include(arr[i])){
-            return true
-        }
-        else {
-            dict[k-arr[i]] = i
-        }
-    }
-    return false
+const Multiply = (arr)=> {
+    
 }
-console.log(twosum([10, 15, 3, 7], 17))
+
+console.log(MultiplyArr([1, 2, 3, 4, 5]))

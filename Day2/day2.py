@@ -1,26 +1,43 @@
-def twosum(arr,k):
-     #assuming the two digits are distinct in position
-     #i.e arr = [10,20,5] and k = 20 arr[0]+arr[0] = 20 since the two sum are not distinctive positionally, this is invalid
-
+def multiplyarr(arr):
+    res = []
+    left = []
+    right = []
+    start = 1
+    end = 1
     for i in range(len(arr)-1):
+        start *= arr[i]
+        left.append(start)
+    left.insert(0,1)
+    for i in range(len(arr)-1, 0, -1):
+        end *= arr[i]
+        right.insert(0,end)
+    right.append(1)
+
+    for i in range(len(arr)):
+        res.append(left[i] * right[i])
+    return res
+
+
+def multiply(arr):
+# Accounts for zero elements
+
+    res = [1 for i in range(len(arr))]
+    mult = 1
+
+    for i in range(len(arr)): 
+        res[i] = mult 
+        mult *= arr[i] 
+
+  
+    # Initialize mult to 1 for resuct on right side  
+    mult = 1
+  
+    # In this loop, mult variable contains resuct of 
+    # elements on right side excluding arr[i]  
+    for i in range(len(arr) - 1, -1, -1): 
+        res[i] *= mult 
+        mult *= arr[i] 
+    return res
         
-        if k - arr[i] in arr[i:]:
-            return True
-    return False
 
-def twosum1(arr,k):
-    #Trade time for space complexity
-
-    diction = {}
-
-    for i in arr:
-        if i in diction:
-            return True
-        else:
-            diction[k-i] = i
-
-    return False
-
-
-print(twosum1([10, 15, 3, 7] , 10))
-    
+print(multiply([1, 2, 3, 4, 0]))
